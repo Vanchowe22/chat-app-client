@@ -26,6 +26,10 @@ public class HelloApplication extends Application {
     private static Scene connectScene;
     private TextArea chatDisplay;
     private TextField messageField;
+    private TextField hostField;
+    private TextField portField;
+    private Label hostLabel;
+    private Label portLabel;
     private Button sendButton;
     private Button languageButton;
     private Button connectButton;
@@ -43,8 +47,12 @@ public class HelloApplication extends Application {
         connectButton = new Button("Connect");
         VBox connectLayout = new VBox(10);
         name = new Label("Enter name:");
+        hostLabel = new Label("Enter host:");
+        portLabel = new Label("Enter port:");
+        hostField = new TextField();
+        portField = new TextField();
 
-        connectLayout.getChildren().addAll(name, nicknameField, connectButton, languageButton);
+        connectLayout.getChildren().addAll(name, nicknameField, hostLabel, hostField, portLabel, portField, connectButton, languageButton);
         connectScene = new Scene(connectLayout, 300, 300);
 
 
@@ -84,10 +92,7 @@ public class HelloApplication extends Application {
         Scene chat = new Scene(root, 600, 400);
 
         endSessionButton.setOnAction(event -> controller.endSession(connectScene, primaryStage, nickname));
-        sendButton.setOnAction(event -> {
-            controller.sendMessage(messageField.getText(), nickname);
-            messageField.setText("");
-        });
+        sendButton.setOnAction(event -> controller.sendMessage(messageField.getText(), nickname));
         connectButton.setOnAction(event -> {
             String nickname = nicknameField.getText().trim();
             if (!isValidNickname(nickname)) {
@@ -96,7 +101,7 @@ public class HelloApplication extends Application {
             }
             this.nickname = nickname;
             controller = new Controller();
-            controller.connectToServer(nickname);
+            controller.connectToServer(nickname, hostField.getText(), Integer.parseInt(portField.getText()));
             primaryStage.setScene(chat);
             controller.receiveMessages(chatDisplay, userList);
         });
@@ -137,6 +142,8 @@ public class HelloApplication extends Application {
             sendButton.setText("Изпрати");
             languageButton.setText("Английски");
             connectButton.setText("Свържи се");
+            hostLabel.setText("Хост:");
+            portLabel.setText("Порт:");
             endSessionButton.setText("Прекрати сесията");
             name.setText("Въведи име:");
             messageField.setPromptText("Въведи съобщение...");
@@ -144,6 +151,8 @@ public class HelloApplication extends Application {
             sendButton.setText("Send");
             languageButton.setText("Bulgarian");
             connectButton.setText("Connect");
+            hostLabel.setText("Enter host:");
+            portLabel.setText("Enter port:");
             endSessionButton.setText("End Session");
             name.setText("Enter name:");
             messageField.setPromptText("Type your message...");

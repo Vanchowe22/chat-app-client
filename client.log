@@ -1,22 +1,6 @@
-апр 05, 2024 2:06:58 ПР.ОБ. com.example.chatapp.Logger info
-INFO: U:rr
-апр 05, 2024 2:06:58 ПР.ОБ. com.example.chatapp.Logger info
-INFO: J:rr is connected!
-апр 05, 2024 2:06:58 ПР.ОБ. com.example.chatapp.Logger info
-INFO: A:(02:05) asd is connected!|(02:05) asd: asd|(02:05) asd: asd|(02:05) asd: asd|(02:05) asd has left.|(02:06) rr is connected!
-апр 05, 2024 2:07:00 ПР.ОБ. com.example.chatapp.Logger info
-INFO: T:rr: sdf
-апр 05, 2024 2:07:01 ПР.ОБ. com.example.chatapp.Logger info
-INFO: Trying to send empty message
-апр 05, 2024 2:07:01 ПР.ОБ. com.example.chatapp.Logger info
-INFO: Trying to send empty message
-апр 05, 2024 2:07:01 ПР.ОБ. com.example.chatapp.Logger info
-INFO: Trying to send empty message
-апр 05, 2024 2:07:03 ПР.ОБ. com.example.chatapp.Logger info
-INFO: T:rr: asd
-апр 05, 2024 2:07:04 ПР.ОБ. com.example.chatapp.Logger info
-INFO: L:rr
-апр 05, 2024 2:07:04 ПР.ОБ. com.example.chatapp.Logger info
-INFO: U:
-апр 05, 2024 2:07:04 ПР.ОБ. com.example.chatapp.Logger info
-INFO: L:rr has left.
+апр 05, 2024 2:15:14 ПР.ОБ. com.example.chatapp.Logger info
+INFO: U:asd
+апр 05, 2024 2:15:14 ПР.ОБ. com.example.chatapp.Logger info
+INFO: J:asd is connected!
+апр 05, 2024 2:15:14 ПР.ОБ. com.example.chatapp.Logger info
+INFO: A:(02:15) asd is connected!
