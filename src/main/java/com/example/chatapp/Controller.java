@@ -8,13 +8,8 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class Controller {
-    private String host;
-    private int port;
     private Socket socket;
     private BufferedReader inputStream;
     private PrintWriter outputStream;
@@ -22,12 +17,10 @@ public class Controller {
     private String nickname;
     private final Logger logger = new Logger();
 
-    public void connectToServer(String nickname, String host, int port) {
+    public void connectToServer(String nickname) {
         try {
-            this.host = host;
-            this.port = port;
             this.nickname = nickname;
-            socket = new Socket(host, port);
+            socket = new Socket("localhost", 8000);
             outputStream = new PrintWriter(socket.getOutputStream(), true);
             outputStream.println("C:" + nickname);
         } catch (Exception e) {
