@@ -53,7 +53,7 @@ public class Controller {
             outputStream.println("T:" + nickname + ": " + text);
         } catch (Exception e) {
             logger.severe(e.getMessage());
-            HelloApplication.showAlert(false, e.getMessage());
+            ChatApplication.showAlert(false, e.getMessage());
         }
     }
 
@@ -88,7 +88,7 @@ public class Controller {
             } catch (IOException e) {
                 logger.severe(e.getMessage());
             } catch (AlreadyHereException e) {
-                Platform.runLater(() -> HelloApplication.showAlert(true, e.getMessage()));
+                Platform.runLater(() -> ChatApplication.showAlert(true, e.getMessage()));
             } finally {
                 try {
                     socket.close();
