@@ -22,8 +22,6 @@ public class Controller {
 
     public void connectToServer(String nickname, String host, int port) {
         try {
-            this.host = host;
-            this.port = port;
             this.nickname = nickname;
             socket = new Socket(host, port);
             outputStream = new PrintWriter(socket.getOutputStream(), true);
