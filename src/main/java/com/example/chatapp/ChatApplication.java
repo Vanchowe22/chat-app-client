@@ -18,7 +18,7 @@ import java.io.ObjectOutputStream;
 import java.lang.reflect.Method;
 import java.net.Socket;
 
-public class HelloApplication extends Application {
+public class ChatApplication extends Application {
     private String nickname;
     private Controller controller;
     private ListView<String> userList;
