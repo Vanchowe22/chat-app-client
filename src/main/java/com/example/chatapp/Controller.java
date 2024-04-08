@@ -31,7 +31,7 @@ public class Controller {
             outputStream = new PrintWriter(socket.getOutputStream(), true);
             outputStream.println("C:" + nickname);
         } catch (Exception e) {
-            System.out.println(e);
+            logger.severe(e.getMessage());
         }
     }
 
