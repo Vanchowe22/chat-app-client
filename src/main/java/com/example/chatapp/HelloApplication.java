@@ -106,7 +106,11 @@ public class HelloApplication extends Application {
             controller.receiveMessages(chatDisplay, userList);
         });
 
-        primaryStage.setOnCloseRequest(event -> controller.close());
+        primaryStage.setOnCloseRequest(event -> {
+            if (controller != null) {
+                controller.close();
+            }
+        });
 
         primaryStage.setTitle("Chat Application");
         primaryStage.setScene(connectScene);
