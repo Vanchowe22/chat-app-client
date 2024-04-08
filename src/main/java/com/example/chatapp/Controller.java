@@ -42,7 +42,6 @@ public class Controller {
     }
 
     public void sendMessage(String text, String nickname) {
-        String textString = text;
         try {
             if (text.length() > 200) {
                 logger.warn("Too many symbols");
@@ -51,7 +50,7 @@ public class Controller {
                 logger.info("Trying to send empty message");
                 return;
             }
-            outputStream.println("T:" + nickname + ": " + textString);
+            outputStream.println("T:" + nickname + ": " + text);
         } catch (Exception e) {
             logger.severe(e.getMessage());
             HelloApplication.showAlert(false, e.getMessage());
