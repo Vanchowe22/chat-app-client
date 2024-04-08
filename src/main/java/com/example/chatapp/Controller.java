@@ -13,8 +13,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Controller {
-    private String host;
-    private int port;
     private Socket socket;
     private BufferedReader inputStream;
     private PrintWriter outputStream;
