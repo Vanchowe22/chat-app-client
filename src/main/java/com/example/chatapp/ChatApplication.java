@@ -92,7 +92,10 @@ public class ChatApplication extends Application {
         Scene chat = new Scene(root, 600, 400);
 
         endSessionButton.setOnAction(event -> controller.endSession(connectScene, primaryStage, nickname));
-        sendButton.setOnAction(event -> controller.sendMessage(messageField.getText(), nickname));
+        sendButton.setOnAction(event -> {
+            controller.sendMessage(messageField.getText(), nickname);
+            messageField.clear();
+        });
         connectButton.setOnAction(event -> {
             String nickname = nicknameField.getText().trim();
             if (!isValidNickname(nickname)) {
