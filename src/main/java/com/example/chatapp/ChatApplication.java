@@ -87,16 +87,24 @@ public class ChatApplication extends Application {
             messageField.clear();
         });
         connectButton.setOnAction(event -> {
-            String nickname = nicknameField.getText().trim();
-            if (!isValidNickname(nickname)) {
-                showAlert(true, "Containing forbidden symbols");
-                return;
+            try {
+                String nickname = nicknameField.getText().trim();
+                if (!isValidNickname(nickname)) {
+                    showAlert(true, "Containing forbidden symbols");
+                    return;
+                }
+                if (hostField.getText().isEmpty()) {
+                    showAlert(true, "Write valid host");
+                }
+                int port = Integer.parseInt(portField.getText());
+                this.nickname = nickname;
+                controller = new Controller();
+                controller.connectToServer(nickname, hostField.getText(), port);
+                primaryStage.setScene(chat);
+                controller.receiveMessages(chatDisplay, userList);
+            } catch (Exception e) {
+                showAlert(true, "Should be a number");
             }
-            this.nickname = nickname;
-            controller = new Controller();
-            controller.connectToServer(nickname, hostField.getText(), Integer.parseInt(portField.getText()));
-            primaryStage.setScene(chat);
-            controller.receiveMessages(chatDisplay, userList);
         });
 
         primaryStage.setOnCloseRequest(event -> {
@@ -112,7 +120,7 @@ public class ChatApplication extends Application {
 
 
     private boolean isValidNickname(String nickname) {
-        if (nickname.contains("[") || nickname.contains("]")) {
+        if ((nickname.contains("[") || nickname.contains("]")) && nickname.isEmpty()) {
             return false;
         }
         return true;
