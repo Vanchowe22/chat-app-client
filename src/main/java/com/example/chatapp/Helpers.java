@@ -38,4 +38,8 @@ public class Helpers {
         String name = message.split(" ")[0].substring(2);
         return Objects.equals(nickname, name);
     }
+
+    public void alert(boolean isNickname, String message) {
+        Platform.runLater(() -> ChatApplication.showAlert(isNickname, message));
+    }
 }
