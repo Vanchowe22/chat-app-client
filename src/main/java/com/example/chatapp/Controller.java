@@ -27,6 +27,7 @@ public class Controller {
             outputStream = new PrintWriter(socket.getOutputStream(), true);
             outputStream.println("C:" + nickname);
         } catch (Exception e) {
+            helpers.alert(true, "The server is down");
             logger.severe(e.getMessage());
         }
     }
@@ -53,7 +54,7 @@ public class Controller {
             outputStream.println("T:" + nickname + ": " + text);
         } catch (Exception e) {
             logger.severe(e.getMessage());
-            ChatApplication.showAlert(false, e.getMessage());
+            helpers.alert(false, e.getMessage());
         }
     }
 
@@ -87,13 +88,18 @@ public class Controller {
                 }
             } catch (IOException e) {
                 logger.severe(e.getMessage());
+                helpers.alert(true, "The server is down");
             } catch (AlreadyHereException e) {
-                Platform.runLater(() -> ChatApplication.showAlert(true, e.getMessage()));
+                helpers.alert(true, e.getMessage());
+            } catch (NullPointerException e) {
+                logger.warn(e.getMessage());
             } finally {
                 try {
-                    socket.close();
-                    inputStream.close();
-                    outputStream.close();
+                    if (socket != null) {
+                        socket.close();
+                        inputStream.close();
+                        outputStream.close();
+                    }
                 } catch (IOException e) {
                     logger.severe(e.getMessage());
                 }
